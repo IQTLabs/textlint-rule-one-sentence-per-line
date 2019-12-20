@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "keywords": [
+    "textlintrule"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "src/"
+  ],
+  "scripts": {
+    "test": "textlint-scripts test",
+    "build": "textlint-scripts build",
+    "prepublish": "npm run --if-present build"
+  },
+  "devDependencies": {
+    "textlint-scripts": "^3.0.0",
+    "textlint-tester": "^5.1.11"
+  },
+  "name": "textlint-rule-sembr",
+  "directories": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "description": ""
+}
