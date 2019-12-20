@@ -23,5 +23,8 @@
   },
   "author": "",
   "license": "Apache-2.0",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "sentence-splitter": "^3.2.0"
+  }
 }
