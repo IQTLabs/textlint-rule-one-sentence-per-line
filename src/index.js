@@ -38,7 +38,7 @@ function isNodeWrapped(node, types) {
 const reporter = context => {
   const { Syntax, RuleError, fixer, report, getSource } = context
   return {
-    [Syntax.Str](node) {
+    [Syntax.Paragraph](node) {
       // Titles aren't sembr since breaks do affect them
       if (isNodeWrapped(node, [Syntax.Header])) {
         return
