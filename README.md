@@ -96,7 +96,23 @@ These two sentences will be one the same line. This is because we disabled the r
 Although the line breaks will not (hopefully!) change the rendered file, it may make the raw Markdown a little ugly.
 To solve that, we recommend using [`prettier`](https://prettier.io) to clean up the outputted Markdown.
 
-Finally, if you are using [Pandoc's Markdown](https://pandoc.org/MANUAL.html#pandocs-markdown) with citations, put the citations
+Finally, if you are using [Pandoc's Markdown](https://pandoc.org/MANUAL.html#pandocs-markdown) with citations, put the citations **inside** the period.
+This will keep the citation on the same line as the sentence.
+Don't worry!
+Pandoc is smart enough to figure out whether to put your citation after the period if you style requires it in the rendered output.
+For example:
+
+```markdown
+Do this [@Lee2018]. Don't do this.[@Lee2019] Also don't do this. [@Lee2020]
+```
+
+Will be fixed to be:
+
+```markdown
+Do this [@Lee2018].
+Don't do this.[@Lee2019] Also don't do this.
+[@Lee2020]
+```
 
 ## Contribute
 
