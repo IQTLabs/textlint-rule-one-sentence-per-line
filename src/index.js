@@ -43,7 +43,6 @@ const reporter = context => {
       if (isNodeWrapped(node, [Syntax.Header])) {
         return
       }
-
       const text = getSource(node)
       const split = splitter.split(text)
 
@@ -51,21 +50,50 @@ const reporter = context => {
       if (split.filter(x => x.type == "Sentence").length == 1) {
         return
       }
-      // Sometimes, we might get a case where two lines separated by whitespaces are
-      // treated as a string Syntax.Str
-      //
-      // For example:
+      // Sometimes, we might get a case where two lines are separated by whitespaces,
+      // but are passed together. For example:
       //
       // Hello World!
       // My Name is Benjamin.
       //
       // Would yield ["Hello World!", "\n", "My name is Benjamin."] when split by sentence-splitter
       // This has two sentences in it but is proper sembr
-      else if (
-        split
-          .filter(x => x.type == "WhiteSpace")
-          .every(x => x.type == "WhiteSpace" && x.raw == "\n")
-      ) {
+      //
+      // Similarly, we need to check even in the case where the new line is indented.
+      // sentence-splitter treats this as a separate whitespace from the \n, so we just
+      // need to see that every sentence has a newline after it some time before the
+      // next sentence starts.
+
+      // a placeholder variable
+      let allSentencesHaveNewlines = true
+
+      for (let node = 0; node < split.length; node++) {
+        const element = split[node]
+
+        // we only care about sentences
+        if (element.type != "Sentence") {
+          continue
+        }
+
+        // for each sentence, we're going to check util we find another sentence
+        for (let index = 1; index < split.length - node; index++) {
+          const nextElement = split[node + index]
+          // check to see if the whitespace has a newline
+          if (
+            nextElement.type == "WhiteSpace" &&
+            nextElement.raw.includes("\n")
+          ) {
+            break
+          }
+          // if not, and the next element is a sentence, we found a sentence on the same
+          // line, so we shouldn't return early
+          if (nextElement.type == "Sentence") {
+            allSentencesHaveNewlines = false
+          }
+        }
+      }
+      // return early if we haven't found sentences on a new line.
+      if (allSentencesHaveNewlines) {
         return
       }
 

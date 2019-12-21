@@ -13,7 +13,15 @@ tester.run("rule", rule, {
     "# This is the title.\nThis is a single sentence.",
     "# This is the title. It has two sentences.",
     // or H2 titles
-    "## This is a second title. It has two sentences."
+    "## This is a second title. It has two sentences.",
+    // indentation after a new line shouldn't affect anything
+    "1. This is a line.\n\n   This is a second.\n   This is a third indented line.",
+    "1. This is a line.\n\n   This is a second.   \n   This is a third indented line.",
+    "1. This is a line.\n\n   This is a second.  \t  \t\n   This is a third indented line.",
+    "1. This is a line.\n\n   This is a second.\n\tThis is a third indented line.",
+    // Don't make code SemBr
+    "This sentence precedes a code block:\n\n\tThis is code. Don't split me.",
+    "This sentence precedes a code block:\n\n    This is code. Don't split me."
   ],
   invalid: [
     // single match
@@ -68,6 +76,17 @@ tester.run("rule", rule, {
       text: "**This emphasis has more than one sentence. It has two lines.**",
       output:
         "**This emphasis has more than one sentence.\nIt has two lines.**",
+      errors: [
+        {
+          message: "More than one sentence per line"
+        }
+      ]
+    },
+    {
+      text:
+        "1. This is a sentence. \n\n   This is a second sentence. This is a third sentence.",
+      output:
+        "1. This is a sentence. \n\n   This is a second sentence.\nThis is a third sentence.",
       errors: [
         {
           message: "More than one sentence per line"
