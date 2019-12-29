@@ -18,12 +18,13 @@
     "textlint-tester": "^5.1.11"
   },
   "name": "textlint-rule-one-sentence-per-line",
+  "repository": "github:Lab41/textlint-rule-one-sentence-per-line",
   "directories": {
     "test": "test"
   },
-  "author": "",
+  "author": "Benjamin Lee",
   "license": "Apache-2.0",
-  "description": "",
+  "description": "A fixable textlint rule to add a line break after each sentence",
   "dependencies": {
     "sentence-splitter": "^3.2.0"
   }
