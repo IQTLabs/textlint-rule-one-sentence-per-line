@@ -22,7 +22,8 @@ tester.run("rule", rule, {
     "1. This is a line.\n\n   This is a second.\n\tThis is a third indented line.",
     // Don't make code SemBr
     "This sentence precedes a code block:\n\n\tThis is code. Don't split me.",
-    "This sentence precedes a code block:\n\n    This is code. Don't split me."
+    "This sentence precedes a code block:\n\n    This is code. Don't split me.",
+    "This is a line with a URL https://example.com?foo=bar but only one sentence."
   ],
   invalid: [
     // single match
