@@ -30,7 +30,7 @@
   "license": "Apache-2.0",
   "description": "A fixable textlint rule to add a line break after each sentence",
   "dependencies": {
-    "sentence-splitter": "^3.2.0"
+    "sentence-splitter": "^3.2.2"
   },
   "bugs": {
     "url": "https://github.com/Lab41/textlint-rule-one-sentence-per-line/issues"

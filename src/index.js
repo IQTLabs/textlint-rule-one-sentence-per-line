@@ -79,7 +79,7 @@ const reporter = context => {
           const nextElement = split[node + index]
           // check to see if the whitespace has a newline
           if (
-            nextElement.type == "WhiteSpace" &&
+            (nextElement.type == "WhiteSpace" || nextElement.type == "Break") &&
             nextElement.raw.includes("\n")
           ) {
             break

@@ -16,8 +16,7 @@ tester.run("rule", rule, {
     "## This is a second title. It has two sentences.",
     // indentation after a new line shouldn't affect anything
     "1. This is a line.\n\n   This is a second.\n   This is a third indented line.",
-    // Disabled due to https://github.com/azu/sentence-splitter/issues/23
-    //"1. This is a line.\n\n   This is a second.   \n   This is a third indented line.",
+    "1. This is a line.\n\n   This is a second.   \n   This is a third indented line.",
     "1. This is a line.\n\n   This is a second.  \t  \t\n   This is a third indented line.",
     "1. This is a line.\n\n   This is a second.\n\tThis is a third indented line.",
     // Don't make code SemBr
