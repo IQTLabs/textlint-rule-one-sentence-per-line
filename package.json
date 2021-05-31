@@ -11,7 +11,7 @@
   "scripts": {
     "test": "textlint-scripts test",
     "build": "textlint-scripts build",
-    "prepublish": "npm run --if-present build"
+    "prepare": "npm run --if-present build"
   },
   "devDependencies": {
     "textlint-scripts": "^3.0.0",
