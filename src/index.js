@@ -43,8 +43,7 @@ const reporter = context => {
       if (isNodeWrapped(node, [Syntax.Header])) {
         return
       }
-      const text = getSource(node)
-      const split = splitter.split(text)
+      const split = splitter.splitAST(node).children
 
       // if there is only one sentence in the line, return early it's following sembr
       if (split.filter(x => x.type == "Sentence").length == 1) {
@@ -80,7 +79,7 @@ const reporter = context => {
           const nextElement = split[node + index]
           // check to see if the whitespace has a newline
           if (
-            nextElement.type == "WhiteSpace" &&
+            (nextElement.type == "WhiteSpace" || nextElement.type == "Break") &&
             nextElement.raw.includes("\n")
           ) {
             break
