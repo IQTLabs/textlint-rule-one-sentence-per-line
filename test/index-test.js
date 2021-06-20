@@ -15,10 +15,13 @@ tester.run("rule", rule, {
     // or H2 titles
     "## This is a second title. It has two sentences.",
     // indentation after a new line shouldn't affect anything
-    "1. This is a line.\n\n   This is a second.\n   This is a third indented line.",
-    "1. This is a line.\n\n   This is a second.   \n   This is a third indented line.",
-    "1. This is a line.\n\n   This is a second.  \t  \t\n   This is a third indented line.",
-    "1. This is a line.\n\n   This is a second.\n\tThis is a third indented line.",
+    "This is a line.\n\n   This is a second.\n   This is a third indented line.",
+    "This is a line.\n\n   This is a second.   \n   This is a third indented line.",
+    "This is a line.\n\n   This is a second.  \t  \t\n   This is a third indented line.",
+    "This is a line.\n\n   This is a second.\n\tThis is a third indented line.",
+    // Ordered lists detect correctly
+    "1. One sentence.\n2. Another sentence.",
+    "1. This is a list.\n   It has complex entries.\n   Indentation causes them to group correctly.\n2. Each may have multiple sentences.",
     // Don't make code SemBr
     "This sentence precedes a code block:\n\n\tThis is code. Don't split me.",
     "This sentence precedes a code block:\n\n    This is code. Don't split me.",
